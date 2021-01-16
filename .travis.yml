@@ -9,3 +9,14 @@ before_install:
 
 script:
   - docker run -e CI=true stephengrider/test-react npm run test
+
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "docker"
+  env: "Docker-env"
+  bucket_name: "elasticbeanstalk-us-east-2-362937816603"
+  bucket_path: "docker"
+  on:
+    branch: master
